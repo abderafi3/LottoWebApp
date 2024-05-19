@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Lotto App</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/}">Homepage</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/playLotto}">Play Lotto</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/checkTicket}">Check Results</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Welcome Message</h2>
+            <p class="welcome-message">Play Lotto and check your ticket results online. Select your lucky numbers and see if you can win big in the next draw!</p>
+        </div>
+        <div class="col-md-6">
+            <div class="info-block">
+                <h2>Last Draw Numbers:</h2>
+                <div class="number-block" id="lastDrawNumbers">
+                    <div th:each="num : ${lastGeneratedNumbers}" th:text="${num}">0</div>
+                </div>
+                <p>Date: <span th:text="${lastDrawDate}">No draw has occurred yet.</span></p>
+            </div>
+            <div class="info-block">
+                <h2>Next Draw Date:</h2>
+                <p id="nextDrawDate">No draw has occurred yet.</p>
+                <div id="timer" class="timer">Calculating...</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/index.js"></script>
+</body>
+</html>

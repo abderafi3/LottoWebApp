@@ -1,0 +1,52 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Fira Sans', sans-serif;
+}
+.navbar {
+    margin-bottom: 20px;
+}
+.container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+h1, h2, h3 {
+    color: #d9534f;
+}
+h1 {
+    margin-bottom: 40px;
+}
+.timer {
+    font-size: 1.5rem;
+    color: #f0ad4e;
+}
+.welcome-message, .game-rules {
+    margin-bottom: 20px;
+}
+.number-block {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.number-block div {
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #5cb85c;
+    color: #ffffff;
+    border-radius: 50%;
+}
+.info-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.info-block p {
+    margin: 10px 0;
+}

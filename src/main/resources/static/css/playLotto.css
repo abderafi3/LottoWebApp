@@ -1,0 +1,63 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Fira Sans', sans-serif;
+}
+.navbar {
+    margin-bottom: 20px;
+}
+.container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+h1 {
+    color: #d9534f;
+    margin-bottom: 20px;
+}
+.number-block {
+    display: grid;
+    grid-template-columns: repeat(7, 40px);
+    gap: 2px;
+    justify-content: center;
+    margin-bottom: 20px;
+    border: 1px solid #d9534f;
+    padding: 20px;
+}
+.number-button {
+    width: 40px;
+    height: 40px;
+    background-color: #f0ad4e;
+    border-radius: 50%;
+    color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+.number-button.chosen {
+    background-color: #d9534f;
+    color: white;
+}
+.number-button.disabled {
+    background-color: #e9ecef;
+    border-color: #ced4da;
+    cursor: not-allowed;
+}
+.email-field {
+    margin-bottom: 20px;
+}
+.btn-danger, .btn-success {
+    margin-right: 10px;
+}
+.modal-header {
+    background-color: #50C878;
+    color: #ffffff;
+}
+.modal-footer {
+    background-color: #f8f9fa;
+}
+.modal-body {
+    font-size: 1.1em;
+}
