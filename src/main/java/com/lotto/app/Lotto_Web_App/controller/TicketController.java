@@ -2,6 +2,7 @@ package com.lotto.app.Lotto_Web_App.controller;
 
 import com.lotto.app.Lotto_Web_App.entity.Draw;
 import com.lotto.app.Lotto_Web_App.entity.Ticket;
+import com.lotto.app.Lotto_Web_App.scheduler.DrawScheduler;
 import com.lotto.app.Lotto_Web_App.service.DrawService;
 import com.lotto.app.Lotto_Web_App.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,11 +25,14 @@ public class TicketController {
     @Autowired
     private DrawService drawService;
 
+    @Autowired
+    private DrawScheduler drawScheduler;
+
     @PostMapping("/submit")
     public String submitTicket(@RequestBody TicketRequest ticketRequest) {
         try {
             String ticketNumber = ticketService.saveTicket(ticketRequest.getEmail(), ticketRequest.getNumberSet());
-            return "Ticket submitted successfully. Your ticket number is " + ticketNumber;
+            return "Ticket submitted successfully. Your ticket number is:  " + ticketNumber;
         } catch (Exception e) {
             e.printStackTrace();
             return "An error occurred while submitting the ticket. Please try again.";
@@ -54,7 +58,7 @@ public class TicketController {
                 return response;
             }
 
-            LocalDateTime nextDrawDate = drawService.calculateNextDrawDate(lastDraw.getDrawDate());
+            LocalDateTime nextDrawDate = drawScheduler.getNextDrawDate();
             if (ticket.getSubmitDate().isAfter(lastDraw.getDrawDate())) {
                 response.put("error", true);
                 response.put("message", "This ticket will be included in the next draw on " + nextDrawDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy 'at' HH:mm")) + ".");

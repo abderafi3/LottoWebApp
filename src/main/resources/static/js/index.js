@@ -20,7 +20,7 @@ function fetchNextDrawDate() {
         .then(response => response.text())
         .then(data => {
             const nextDrawDate = new Date(data);
-            const formattedDate = nextDrawDate.toLocaleString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false });
+            const formattedDate = nextDrawDate.toLocaleString('de', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false });
             document.getElementById('nextDrawDate').innerText = formattedDate;
             updateTimer(nextDrawDate.toISOString());
             setInterval(() => updateTimer(nextDrawDate.toISOString()), 1000);
@@ -33,7 +33,7 @@ function fetchLastDrawNumbers() {
         .then(response => response.json())
         .then(data => {
             const lastDrawNumbers = data.winningNumbers;
-            const lastDrawDate = new Date(data.drawDate).toLocaleString('en-GB', {
+            const lastDrawDate = new Date(data.drawDate).toLocaleString('de', {
                 day: '2-digit',
                 month: '2-digit',
                 year: 'numeric',
