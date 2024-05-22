@@ -1,24 +1,62 @@
-1- Build the Project:
-./mvnw clean package
+# Lotto Webapp Simulator
 
-2- Build and Run the Docker Containers:
-docker-compose up --build
+The Lotto Webapp Simulator is a web application built with Java Spring Boot and PostgreSQL. It allows users to choose lotto numbers, submit tickets, and check the results. The application performs draws twice a week and notifies users via email if their ticket matches certain criteria.
 
+## Features
 
+- User-friendly UI for selecting and submitting lotto numbers.
+- Stores submitted tickets in a PostgreSQL database.
+- Performs draws twice a week (Wednesday and Saturday).
+- Compares submitted numbers against drawn numbers.
+- Notifies users via email if they win.
+- Allows users to check ticket results using a unique ticket number.
+- Populates the database with dummy data for testing purposes.
 
+## Technologies Used
 
-Steps to Deploy
+- Java Spring Boot
+- PostgreSQL
+- Thymeleaf (for templating)
+- Bootstrap (for responsive design)
+- Docker (for containerization)
+- Docker Compose (for orchestrating containers)
 
-Create the ConfigMap and Secret:
-kubectl apply -f k8s-postgres-configmap.yaml
-kubectl apply -f k8s-postgres-secret.yaml
+## Getting Started
 
-Deploy PostgreSQL:
-kubectl apply -f k8s-postgres-deployment.yaml
-kubectl apply -f k8s-postgres-service.yaml
+### Prerequisites
 
-Deploy the Spring Boot Application:
-Ensure you have built and pushed your Docker image to a Docker registry (e.g., Docker Hub) before applying the deployment.
+- Java 17
+- Maven
+- Docker
+- Docker Compose
 
-kubectl apply -f k8s-app-deployment.yaml
-kubectl apply -f k8s-app-service.yaml
+### Setting Up the Project
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/your-username/lotto-simulator-app.git
+   cd lotto-simulator-app
+2. **Build the project:**
+   ```bash
+    ./mvnw clean package
+   
+4. **Run Docker Compose:**
+   ```bash
+   docker-compose up --build
+
+## Accessing the Application
+
+Once the application is running, you can access it in your web browser at: http://localhost:8080
+
+## Usage
+
+### Select Lotto Numbers:
+Go to the "Play Lotto" page and select 6 numbers.
+Enter your email (optional) and submit the ticket.
+
+### Check Ticket Results:
+Go to the "Check Results" page and enter your ticket number to see if you have won.
+### View Draw Information:
+On the homepage, view the last draw numbers and the date of the next draw.
+
