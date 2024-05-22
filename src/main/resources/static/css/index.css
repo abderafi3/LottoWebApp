@@ -4,7 +4,17 @@ body {
 }
 .navbar {
     margin-bottom: 20px;
+    background-color: #343a40;
+    padding: 0.5rem 2.5rem;
 }
+.navbar-brand, .nav-link {
+    color: #ffffff !important;
+    margin-right: 20px;
+}
+.navbar-brand:hover, .nav-link:hover {
+    color: #f0ad4e !important;
+}
+
 .container {
     background-color: #ffffff;
     padding: 20px;

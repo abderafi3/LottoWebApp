@@ -21,6 +21,20 @@ public class Ticket {
 
     private LocalDateTime submitDate;
 
+    //constructors
+
+
+    public Ticket(String email, String ticketNumber, List<Integer> numberSet, LocalDateTime submitDate) {
+        this.email = email;
+        this.ticketNumber = ticketNumber;
+        this.numberSet = numberSet;
+        this.submitDate = submitDate;
+    }
+
+    public Ticket() {
+
+    }
+
     // Getters and setters
     public Long getId() {
         return id;

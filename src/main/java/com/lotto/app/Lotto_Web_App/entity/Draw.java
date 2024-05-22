@@ -17,6 +17,18 @@ public class Draw {
 
     private LocalDateTime drawDate;
 
+    //constructor
+
+
+    public Draw( LocalDateTime drawDate, List<Integer> winningNumbers) {
+        this.drawDate = drawDate;
+        this.winningNumbers = winningNumbers;
+    }
+
+    public Draw() {
+    }
+
+
     // Getters and setters
     public Long getId() {
         return id;
