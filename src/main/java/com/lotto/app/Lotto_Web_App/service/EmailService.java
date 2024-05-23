@@ -34,14 +34,4 @@ public class EmailService {
         }
     }
 
-    // Email Testing
-
-//    public void sendTestEmail() {
-//        SimpleMailMessage message = new SimpleMailMessage();
-//        message.setFrom(fromEmail);
-//        message.setTo("asammiid3@gmail.com");
-//        message.setSubject("Test Email");
-//        message.setText("This is a test email sent from Spring Boot LottoWebApp.");
-//        mailSender.send(message);
-//    }
 }

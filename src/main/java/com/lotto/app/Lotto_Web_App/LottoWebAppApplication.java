@@ -6,7 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class LottoWebAppApplication /*implements  CommandLineRunner*/{
+public class LottoWebAppApplication{
 	@Autowired
 	private EmailService emailService;
 
@@ -14,9 +14,5 @@ public class LottoWebAppApplication /*implements  CommandLineRunner*/{
 		SpringApplication.run(LottoWebAppApplication.class, args);
 	}
 
-//	@Override
-//	public void run(String... args) {
-//		emailService.sendTestEmail();
-//	}
 
 }
