@@ -32,7 +32,7 @@ public class TicketController {
     public String submitTicket(@RequestBody TicketRequest ticketRequest) {
         try {
             String ticketNumber = ticketService.saveTicket(ticketRequest.getEmail(), ticketRequest.getNumberSet());
-            return "Ticket submitted successfully. Your ticket number is:  " + ticketNumber;
+            return "Ticket submitted successfully. Your ticket number is:  \n" + ticketNumber;
         } catch (Exception e) {
             e.printStackTrace();
             return "An error occurred while submitting the ticket. Please try again.";
