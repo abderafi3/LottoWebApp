@@ -4,6 +4,8 @@ import com.lotto.app.Lotto_Web_App.entity.Draw;
 import com.lotto.app.Lotto_Web_App.scheduler.DrawScheduler;
 import com.lotto.app.Lotto_Web_App.service.DrawService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,5 +34,10 @@ public class MainController {
             model.addAttribute("nextDrawDate", "No draw has occurred yet.");
         }
         return "index";
+    }
+
+    @GetMapping("/health")
+    public ResponseEntity<String> healthCheck() {
+        return new ResponseEntity<>("Application is running", HttpStatus.OK);
     }
 }

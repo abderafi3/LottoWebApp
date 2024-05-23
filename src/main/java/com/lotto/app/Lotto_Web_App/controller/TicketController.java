@@ -30,10 +30,7 @@ public class TicketController {
     @Autowired
     private DrawScheduler drawScheduler;
 
-    @GetMapping("/health")
-    public ResponseEntity<String> healthCheck() {
-        return new ResponseEntity<>("Application is running", HttpStatus.OK);
-    }
+
 
     @PostMapping("/submit")
     public String submitTicket(@RequestBody TicketRequest ticketRequest) {
