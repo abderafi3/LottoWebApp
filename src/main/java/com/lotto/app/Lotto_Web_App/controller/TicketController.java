@@ -6,6 +6,8 @@ import com.lotto.app.Lotto_Web_App.scheduler.DrawScheduler;
 import com.lotto.app.Lotto_Web_App.service.DrawService;
 import com.lotto.app.Lotto_Web_App.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -27,6 +29,11 @@ public class TicketController {
 
     @Autowired
     private DrawScheduler drawScheduler;
+
+    @GetMapping("/health")
+    public ResponseEntity<String> healthCheck() {
+        return new ResponseEntity<>("Application is running", HttpStatus.OK);
+    }
 
     @PostMapping("/submit")
     public String submitTicket(@RequestBody TicketRequest ticketRequest) {
