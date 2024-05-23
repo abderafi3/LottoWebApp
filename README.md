@@ -35,8 +35,8 @@ The Lotto Webapp Simulator is a web application built with Java Spring Boot and 
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/your-username/lotto-simulator-app.git
-   cd lotto-simulator-app
+   git clone git@github.com:abderafi3/LottoWebApp.git
+   cd LottoWebApp
 2. **Build the project:**
    ```bash
     ./mvnw clean package
