@@ -6,13 +6,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class LottoWebAppApplication{
+public class LottoWebAppApplication {
 	@Autowired
 	private EmailService emailService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(LottoWebAppApplication.class, args);
 	}
-
-
 }
