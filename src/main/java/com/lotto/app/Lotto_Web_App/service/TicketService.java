@@ -4,6 +4,7 @@ import com.lotto.app.Lotto_Web_App.entity.Ticket;
 import com.lotto.app.Lotto_Web_App.repository.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.lotto.app.Lotto_Web_App.service.EmailService;
 
 import java.time.LocalDateTime;
 import java.util.List;
