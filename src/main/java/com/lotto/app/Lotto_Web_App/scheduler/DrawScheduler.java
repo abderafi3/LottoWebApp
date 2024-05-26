@@ -1,6 +1,7 @@
 package com.lotto.app.Lotto_Web_App.scheduler;
 
 import com.lotto.app.Lotto_Web_App.entity.Draw;
+import com.lotto.app.Lotto_Web_App.entity.Ticket;
 import com.lotto.app.Lotto_Web_App.service.DrawService;
 import com.lotto.app.Lotto_Web_App.service.EmailService;
 import com.lotto.app.Lotto_Web_App.service.TicketService;
