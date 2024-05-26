@@ -24,6 +24,12 @@ public class TicketService {
         ticket.setNumberSet(numberSet);
         ticket.setSubmitDate(LocalDateTime.now());
         ticketRepository.save(ticket);
+         // Send confirmation email
+        if (email != null && !email.isEmpty()) {
+            String subject = "Lotto Ticket Confirmation";
+            String text = "Your ticket has been successfully submitted with the following numbers: " + numberSet.toString();
+            emailService.sendEmail(email, subject, text);
+        }
         return ticketNumber;
     }
 
