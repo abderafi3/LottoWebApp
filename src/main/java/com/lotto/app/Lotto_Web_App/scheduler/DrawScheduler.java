@@ -18,13 +18,33 @@ public class DrawScheduler {
     @Autowired
     private DrawService drawService;
 
+    @Autowired
+    private TicketService ticketService;
+
+    @Autowired
+    private EmailService emailService;
+
     @Scheduled(cron = "0 0 18 * * WED,SAT")
     public void scheduleDraw() {
         Draw draw = new Draw();
         draw.setWinningNumbers(generateWinningNumbers());
         draw.setDrawDate(LocalDateTime.now());
         drawService.saveDraw(draw);
+
+        List<Ticket> allTickets = ticketService.findAllTickets();
+
+        for (Ticket ticket : allTickets) {
+            long matchCount = ticket.getNumberSet().stream().filter(draw.getWinningNumbers()::contains).count();
+            String message;
+            if (matchCount >= 3) {
+                message = "Congratulations! You have " + matchCount + " matching numbers!";
+            } else {
+                message = "Better luck next time!";
+            }
+            emailService.sendEmail(ticket.getEmail(), "Lotto Draw Results", message);
+        }
     }
+    
 
     private List<Integer> generateWinningNumbers() {
         Random random = new Random();
