@@ -19,11 +19,14 @@ public class EmailService {
     @Value("${spring.mail.from}")
     private String fromEmail;
 
+    @Value("${spring.mail.from.name}")
+    private String fromName;
+
     public void sendEmail(String to, String subject, String text) {
         MimeMessage message = mailSender.createMimeMessage();
         try {
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
-            helper.setFrom(fromEmail);
+            helper.setFrom(fromName + " <" + fromEmail + ">");
             helper.setTo(to);
             helper.setSubject(subject);
             helper.setText(text, true);
@@ -33,5 +36,4 @@ public class EmailService {
             e.printStackTrace();
         }
     }
-
 }

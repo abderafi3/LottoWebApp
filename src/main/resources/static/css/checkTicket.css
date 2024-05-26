@@ -1,3 +1,4 @@
+
 .container {
     background-color: #ffffff;
     padding: 20px;
@@ -46,12 +47,10 @@ h1, h3 {
     background-color: #dc3545;
     color: #ffffff;
 }
-
 .modal-header {
     background-color: #f50511;
     color: #ffffff;
 }
-
 #result.success {
     background-color: #d4edda;
     color: #155724;
