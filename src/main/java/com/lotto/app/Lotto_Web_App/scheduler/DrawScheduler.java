@@ -2,6 +2,8 @@ package com.lotto.app.Lotto_Web_App.scheduler;
 
 import com.lotto.app.Lotto_Web_App.entity.Draw;
 import com.lotto.app.Lotto_Web_App.service.DrawService;
+import com.lotto.app.Lotto_Web_App.service.EmailService;
+import com.lotto.app.Lotto_Web_App.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
