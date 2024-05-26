@@ -18,7 +18,7 @@ public class DrawScheduler {
     @Autowired
     private DrawService drawService;
 
-    @Scheduled(cron = "0 0 3 * * WED,SUN")
+    @Scheduled(cron = "0 0 11 * * WED,SUN")
     public void scheduleDraw() {
         Draw draw = new Draw();
         draw.setWinningNumbers(generateWinningNumbers());
