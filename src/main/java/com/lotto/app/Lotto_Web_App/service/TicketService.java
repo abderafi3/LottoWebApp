@@ -16,6 +16,9 @@ public class TicketService {
     @Autowired
     private TicketRepository ticketRepository;
 
+    @Autowired
+    private EmailService emailService;
+
     public String saveTicket(String email, List<Integer> numberSet) {
         String ticketNumber = UUID.randomUUID().toString();
         Ticket ticket = new Ticket();
