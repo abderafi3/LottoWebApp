@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
-@EnableScheduling
 public class LottoWebAppApplication {
 	@Autowired
 	private EmailService emailService;
