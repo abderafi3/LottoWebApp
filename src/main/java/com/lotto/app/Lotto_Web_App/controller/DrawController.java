@@ -1,7 +1,6 @@
 package com.lotto.app.Lotto_Web_App.controller;
 
 import com.lotto.app.Lotto_Web_App.entity.Draw;
-import com.lotto.app.Lotto_Web_App.entity.Ticket;
 import com.lotto.app.Lotto_Web_App.scheduler.DrawScheduler;
 import com.lotto.app.Lotto_Web_App.service.DrawService;
 import com.lotto.app.Lotto_Web_App.service.TicketService;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -42,24 +40,34 @@ public class DrawController {
     }
 
     @GetMapping("/ticketMatchCounts")
-    public Map<Integer, Long> getTicketMatchCounts() {
-        Draw lastDraw = drawService.findLastDraw();
-        Map<Integer, Long> matchCounts = new HashMap<>();
-        for (int i = 3; i <= 6; i++) {
-            matchCounts.put(i, 0L);
-        }
-
-        if (lastDraw != null) {
-            List<Integer> winningNumbers = lastDraw.getWinningNumbers();
-            List<Ticket> tickets = ticketService.findAllTickets();
-
-            for (Ticket ticket : tickets) {
-                long matchCount = ticket.getNumberSet().stream().filter(winningNumbers::contains).count();
-                if (matchCount >= 3 && matchCount <= 6) {
-                    matchCounts.put((int) matchCount, matchCounts.getOrDefault((int) matchCount, 0L) + 1);
-                }
-            }
-        }
-        return matchCounts;
+    public Map<String, Map<Integer, ? extends Number>> getTicketMatchCounts() {
+        Map<Integer, Long> matchCounts = drawService.getMatchCounts();
+        Map<Integer, Double> prizeDistribution = drawService.calculatePrizes(matchCounts);
+        Map<String, Map<Integer, ? extends Number>> response = new HashMap<>();
+        response.put("matchCounts", matchCounts);
+        response.put("prizes", prizeDistribution);
+        return response;
     }
+
+//    @GetMapping("/ticketMatchCounts")
+//    public Map<Integer, Long> getTicketMatchCounts() {
+//        Draw lastDraw = drawService.findLastDraw();
+//        Map<Integer, Long> matchCounts = new HashMap<>();
+//        for (int i = 3; i <= 6; i++) {
+//            matchCounts.put(i, 0L);
+//        }
+//
+//        if (lastDraw != null) {
+//            List<Integer> winningNumbers = lastDraw.getWinningNumbers();
+//            List<Ticket> tickets = ticketService.findAllTickets();
+//
+//            for (Ticket ticket : tickets) {
+//                long matchCount = ticket.getNumberSet().stream().filter(winningNumbers::contains).count();
+//                if (matchCount >= 3 && matchCount <= 6) {
+//                    matchCounts.put((int) matchCount, matchCounts.getOrDefault((int) matchCount, 0L) + 1);
+//                }
+//            }
+//        }
+//        return matchCounts;
+//    }
 }
