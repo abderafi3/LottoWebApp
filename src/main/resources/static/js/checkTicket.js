@@ -72,10 +72,18 @@ function updateMatchCounts() {
     })
     .then(response => response.json())
     .then(data => {
-        document.getElementById('count3').innerText = data[3] || 0;
-        document.getElementById('count4').innerText = data[4] || 0;
-        document.getElementById('count5').innerText = data[5] || 0;
-        document.getElementById('count6').innerText = data[6] || 0;
+        const matchCounts = data.matchCounts;
+        const prizes = data.prizes;
+
+        document.getElementById('count3').innerText = matchCounts[3] || 0;
+        document.getElementById('count4').innerText = matchCounts[4] || 0;
+        document.getElementById('count5').innerText = matchCounts[5] || 0;
+        document.getElementById('count6').innerText = matchCounts[6] || 0;
+
+        document.getElementById('prize3').innerText = prizes[3] ? `${prizes[3].toFixed(2)}€` : '100€';
+        document.getElementById('prize4').innerText = prizes[4] ? `${prizes[4].toFixed(2)}€` : '1 000€';
+        document.getElementById('prize5').innerText = prizes[5] ? `${prizes[5].toFixed(2)}€` : '10 000€';
+        document.getElementById('prize6').innerText = prizes[6] ? `${prizes[6].toFixed(2)}€` : '1 000 000€';
     })
     .catch(error => {
         console.error('Error:', error);
@@ -83,6 +91,11 @@ function updateMatchCounts() {
         document.getElementById('count4').innerText = 0;
         document.getElementById('count5').innerText = 0;
         document.getElementById('count6').innerText = 0;
+
+        document.getElementById('prize3').innerText = '0€';
+        document.getElementById('prize4').innerText = '0€';
+        document.getElementById('prize5').innerText = '0€';
+        document.getElementById('prize6').innerText = '0€';
     });
 }
 

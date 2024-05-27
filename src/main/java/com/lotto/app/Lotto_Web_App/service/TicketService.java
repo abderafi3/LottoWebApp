@@ -16,6 +16,10 @@ public class TicketService {
     @Autowired
     private TicketRepository ticketRepository;
 
+//    @Autowired
+//    private EmailService emailService;
+
+
     public String saveTicket(String email, List<Integer> numberSet) {
         String ticketNumber = UUID.randomUUID().toString();
         Ticket ticket = new Ticket();
@@ -24,6 +28,15 @@ public class TicketService {
         ticket.setNumberSet(numberSet);
         ticket.setSubmitDate(LocalDateTime.now());
         ticketRepository.save(ticket);
+
+        // Send confirmation email
+//        if (email != null && !email.isEmpty()) {
+//            String subject = "Lotto Ticket Confirmation";
+//            String text = "Your ticket has been successfully submitted with the following numbers: " + numberSet.toString()
+//                    + " \n Your Ticket Number is: " + ticketNumber;
+//            emailService.sendEmail(email, subject, text);
+//        }
+
         return ticketNumber;
     }
 

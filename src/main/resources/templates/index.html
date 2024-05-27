@@ -5,6 +5,7 @@
     <title>Home Page</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel="stylesheet" th:href="@{/css/index.css}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -32,11 +33,21 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-6">
-            <h2>Welcome Message</h2>
-            <p class="welcome-message">Play Lotto and check your ticket results online. Select your lucky numbers and see if you can win big in the next draw!</p>
+        <div class="col-md-6 col-sm-12">
+            <h2>Welcome to Lotto App</h2>
+            <p class="welcome-message">Welcome to LottoWebApp Simulator! Dive into the excitement and stand a chance to win big with our easy-to-play lotto game.</p>
+            <h3>How to Play</h3>
+            <p>Playing Lotto is simple and fun. Here's how you can get started:</p>
+            <ul>
+                <li>Navigate to the <strong>Play Lotto</strong> page.</li>
+                <li>Select 6 numbers from 1 to 49.</li>
+                <li>Submit your ticket and optionally provide your email for notifications.</li>
+                <li>Wait for the draw, which happens twice a week on Wednesdays and Saturdays.</li>
+            </ul>
+            <p>Once the draw is conducted, you can check your ticket on the <strong>Check Results</strong> page to see if you've won!</p>
+            <p>Don't wait! Join the excitement today and see if you have the winning numbers. Good luck and have fun playing Lotto!</p>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 col-sm-12">
             <div class="info-block">
                 <h2>Last Draw Numbers:</h2>
                 <div class="number-block" id="lastDrawNumbers">

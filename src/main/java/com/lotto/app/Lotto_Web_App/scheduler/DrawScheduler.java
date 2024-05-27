@@ -1,7 +1,10 @@
 package com.lotto.app.Lotto_Web_App.scheduler;
 
 import com.lotto.app.Lotto_Web_App.entity.Draw;
+import com.lotto.app.Lotto_Web_App.entity.Ticket;
 import com.lotto.app.Lotto_Web_App.service.DrawService;
+import com.lotto.app.Lotto_Web_App.service.EmailService;
+import com.lotto.app.Lotto_Web_App.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -18,13 +21,33 @@ public class DrawScheduler {
     @Autowired
     private DrawService drawService;
 
-    @Scheduled(cron = "0 0 12 * * WED,SAT")
+    @Autowired
+    private TicketService ticketService;
+
+    @Autowired
+    private EmailService emailService;
+
+    @Scheduled(cron = "0 0 18 * * WED,SAT")
     public void scheduleDraw() {
         Draw draw = new Draw();
         draw.setWinningNumbers(generateWinningNumbers());
         draw.setDrawDate(LocalDateTime.now());
         drawService.saveDraw(draw);
+
+        List<Ticket> allTickets = ticketService.findAllTickets();
+
+        for (Ticket ticket : allTickets) {
+            long matchCount = ticket.getNumberSet().stream().filter(draw.getWinningNumbers()::contains).count();
+            String message;
+            if (matchCount >= 3) {
+                message = "Congratulations! You have " + matchCount + " matching numbers!";
+            } else {
+                message = "Better luck next time!";
+            }
+            //emailService.sendEmail(ticket.getEmail(), "Lotto Draw Results", message);
+        }
     }
+
 
     private List<Integer> generateWinningNumbers() {
         Random random = new Random();

@@ -1,0 +1,52 @@
+
+/* General body styling */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 16px;
+}
+
+/* Navbar styling */
+.navbar {
+    margin-bottom: 20px;
+    background-color: #343a40 !important;
+    padding: 0.5rem 1rem;
+    box-shadow: 0 4px 4px 0 rgba(0,0,0,.2);
+}
+.navbar-brand, .nav-link {
+    color: #ffffff !important;
+    margin-right: 10px;
+}
+.navbar-brand:hover, .nav-link:hover {
+    color: #f0ad4e !important;
+}
+
+/* Media queries for mobile responsiveness */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0.5rem 1rem;
+    }
+    .navbar-brand, .nav-link {
+        margin-right: 5px;
+    }
+    .container {
+        padding: 15px;
+        max-width: 100%;
+    }
+    h1 {
+        margin-bottom: 20px;
+        font-size: 1.5rem;
+    }
+    .number-block {
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+    .number-block div, .number-button {
+        width: 35px;
+        height: 35px;
+        margin: 3px;
+    }
+    .timer {
+        font-size: 1.25rem;
+    }
+}
