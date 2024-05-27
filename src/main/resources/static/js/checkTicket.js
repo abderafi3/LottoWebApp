@@ -1,5 +1,5 @@
 function checkTicket() {
-    const ticketNumber = document.getElementById('ticketNumber').value;
+    const ticketNumber = document.getElementById('ticketNumber').value.trim();
     if (!ticketNumber) {
         showErrorModal("Please enter a ticket number.");
         return;
