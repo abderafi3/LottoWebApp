@@ -66,3 +66,19 @@ function showErrorModal(message) {
     document.getElementById('errorMessage').innerText = message;
     $('#errorModal').modal('show');
 }
+
+function selectRandomNumbers() {
+    clearSelection();
+    const numberBlock = document.getElementById('numberBlock');
+    let randomNumbers = [];
+    while (randomNumbers.length < 6) {
+        const randomNumber = Math.floor(Math.random() * 49) + 1;
+        if (!randomNumbers.includes(randomNumber)) {
+            randomNumbers.push(randomNumber);
+            const numberElement = Array.from(numberBlock.children).find(child => parseInt(child.innerText) === randomNumber);
+            numberElement.classList.add('chosen');
+        }
+    }
+    selectedNumbers = randomNumbers;
+    updateNumberBlock();
+}
