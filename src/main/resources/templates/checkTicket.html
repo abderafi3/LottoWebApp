@@ -7,13 +7,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel="stylesheet" th:href="@{/css/checkTicket.css}">
+    <!--    <link rel="stylesheet" th:href="@{/css/index.css}">-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark">
     <a class="navbar-brand" th:href="@{/}">Lotto App</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
@@ -32,11 +34,17 @@
 </nav>
 
 <div class="container">
-    <h1>Check Ticket</h1>
+
+    <!-- Last Draw Info -->
+    <h3 class="mt-2">Last Draw Numbers:</h3>
+    <div class="number-block mb-4" id="lastDrawNumbers">
+        <div th:each="num : ${lastGeneratedNumbers}" th:text="${num}">0</div>
+    </div>
     <form id="checkTicketForm" class="form-inline">
         <div class="form-group mb-2">
             <label for="ticketNumber" class="sr-only">Ticket Number</label>
-            <input type="text" class="form-control" id="ticketNumber" placeholder="Enter ticket number" style="width: 400px;">
+            <input type="text" class="form-control" id="ticketNumber" placeholder="Enter ticket number"
+                   style="width: 500px;">
         </div>
         <button type="button" class="btn btn-primary mb-2" onclick="checkTicket()">Check Ticket</button>
     </form>
@@ -76,7 +84,8 @@
 </div>
 
 <!-- Error Modal -->
-<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
+<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">

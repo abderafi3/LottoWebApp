@@ -99,6 +99,25 @@ function updateMatchCounts() {
     });
 }
 
+
+function fetchLastDrawNumbers() {
+    fetch('/api/draw/lastDraw')
+        .then(response => response.json())
+        .then(data => {
+            const lastDrawNumbers = data.winningNumbers;
+
+            document.getElementById('lastDrawNumbers').innerHTML = '';
+            lastDrawNumbers.forEach(num => {
+                const numDiv = document.createElement('div');
+                numDiv.textContent = num;
+                document.getElementById('lastDrawNumbers').appendChild(numDiv);
+            });
+
+        })
+        .catch(error => console.error('Error fetching last draw numbers:', error));
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     updateMatchCounts();
+    fetchLastDrawNumbers();
 });
