@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -61,17 +62,23 @@ public class DrawScheduler {
         return winningNumbers;
     }
 
+
     public LocalDateTime getNextDrawDate() {
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime nextDrawDate = now;
 
-        while (true) {
+        if (now.toLocalTime().isAfter(LocalTime.of(18, 0))) {
             nextDrawDate = nextDrawDate.plusDays(1);
+        }
+
+        while (true) {
             if (nextDrawDate.getDayOfWeek() == DayOfWeek.WEDNESDAY || nextDrawDate.getDayOfWeek() == DayOfWeek.SATURDAY) {
                 break;
             }
+            nextDrawDate = nextDrawDate.plusDays(1);
         }
 
         return nextDrawDate.withHour(18).withMinute(0).withSecond(0).withNano(0);
     }
+
 }
