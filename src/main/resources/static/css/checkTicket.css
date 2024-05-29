@@ -1,26 +1,32 @@
-
 .container {
     background-color: #ffffff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
 h1, h3 {
     color: #d9534f;
 }
+
 .form-inline {
     margin-bottom: 20px;
 }
+
 .form-group {
-    margin-right: 10px;
+    margin-right: 0px;
+    width: 100%;
 }
+
 .form-control {
-    width: 400px;
+    width: 100%;
 }
+
 .btn-primary {
     background-color: #d9534f;
     border-color: #d9534f;
 }
+
 .number-block {
     display: flex;
     flex-wrap: wrap;
@@ -29,17 +35,19 @@ h1, h3 {
     border: 1px solid #d9534f;
     padding: 20px;
 }
+
 .number-block div {
-     width: 40px;
-     height: 40px;
-     margin: 5px;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     background-color: #5cb85c;
-     color: #ffffff;
-     border-radius: 50%;
- }
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #5cb85c;
+    color: #ffffff;
+    border-radius: 50%;
+}
+
 .number-button {
     width: 40px;
     height: 40px;
@@ -55,18 +63,22 @@ h1, h3 {
     background-color: #28a745;
     color: #ffffff;
 }
+
 .number-button.nomatch {
     background-color: #dc3545;
     color: #ffffff;
 }
+
 .modal-header {
     background-color: #f50511;
     color: #ffffff;
 }
+
 #result.success {
     background-color: #d4edda;
     color: #155724;
 }
+
 #result.error {
     background-color: #f8d7da;
     color: #721c24;

@@ -7,9 +7,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel="stylesheet" th:href="@{/css/checkTicket.css}">
-    <!--    <link rel="stylesheet" th:href="@{/css/index.css}">-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark">
@@ -40,17 +40,24 @@
     <div class="number-block mb-4" id="lastDrawNumbers">
         <div th:each="num : ${lastGeneratedNumbers}" th:text="${num}">0</div>
     </div>
-    <form id="checkTicketForm" class="form-inline">
-        <div class="form-group mb-2">
-            <label for="ticketNumber" class="sr-only">Ticket Number</label>
-            <input type="text" class="form-control" id="ticketNumber" placeholder="Enter ticket number"
-                   style="width: 500px;">
+
+    <form id="checkTicketForm" class="form-inline w-100">
+        <div class="row w-100 no-gutters">
+            <div class="col-12 col-md-9 mb-2">
+                <div class="form-group w-100">
+                    <label for="ticketNumber" class="sr-only">Ticket Number</label>
+                    <input type="text" class="form-control w-100" id="ticketNumber" placeholder="Enter ticket number">
+                </div>
+            </div>
+            <div class="col-12 col-md-3 mb-2">
+                <button type="button" class="btn btn-primary w-100" onclick="checkTicket()">Check Ticket</button>
+            </div>
         </div>
-        <button type="button" class="btn btn-primary mb-2" onclick="checkTicket()">Check Ticket</button>
     </form>
+
     <div id="result" class="mt-3"></div>
     <h3 class="mt-5">Match Counts</h3>
-    <table class="table table-bordered table-hover">
+    <table class="table table-bordered table-hover text-center">
         <thead class="thead-light">
         <tr>
             <th>Matches</th>
@@ -62,22 +69,22 @@
         <tr>
             <td>3 Matches</td>
             <td id="count3">0</td>
-            <td id="prize3">100€</td>
+            <td id="prize3" class="text-right">100€</td>
         </tr>
         <tr>
             <td>4 Matches</td>
             <td id="count4">0</td>
-            <td id="prize4">1 000€</td>
+            <td id="prize4" class="text-right">1 000€</td>
         </tr>
         <tr>
             <td>5 Matches</td>
             <td id="count5">0</td>
-            <td id="prize5">10 000€</td>
+            <td id="prize5" class="text-right">10 000€</td>
         </tr>
         <tr>
             <td>6 Matches</td>
             <td id="count6">0</td>
-            <td id="prize6">1 000 000€</td>
+            <td id="prize6" class="text-right">1 000 000€</td>
         </tr>
         </tbody>
     </table>
