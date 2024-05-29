@@ -28,22 +28,31 @@ public class DrawScheduler {
     @Autowired
     private EmailService emailService;
 
-    @Scheduled(cron = "0 0 18 * * WED,SAT")
+    @Scheduled(cron = "0 0 16 * * WED,SAT")
     public void scheduleDraw() {
         Draw draw = new Draw();
         draw.setWinningNumbers(generateWinningNumbers());
         draw.setDrawDate(LocalDateTime.now());
         drawService.saveDraw(draw);
 
-        List<Ticket> allTickets = ticketService.findAllTickets();
+        Draw lastDraw = drawService.findLastDraw();
+        LocalDateTime lastDrawDate = lastDraw != null ? lastDraw.getDrawDate() : LocalDateTime.MIN;
 
-        for (Ticket ticket : allTickets) {
+        List<Ticket> allTickets = ticketService.findAllTickets();
+        List<Ticket> recentTickets = allTickets.stream()
+                .filter(ticket -> ticket.getSubmitDate().isAfter(lastDrawDate))
+                .toList();
+
+        for (Ticket ticket : recentTickets) {
             long matchCount = ticket.getNumberSet().stream().filter(draw.getWinningNumbers()::contains).count();
             String message;
+            String winningNumbers = draw.getWinningNumbers().toString();
             if (matchCount >= 3) {
-                message = "Congratulations! You have " + matchCount + " matching numbers!";
+                message = "Congratulations! You have " + matchCount + " matching numbers! \n " +
+                        "The winning numbers for this draw are: " + winningNumbers;
             } else {
-                message = "Better luck next time!";
+                message = "Unfortunately, you didn't win. Better luck next time! \n" +
+                        "The winning numbers for this draw are: " + winningNumbers;
             }
             emailService.sendEmail(ticket.getEmail(), "Lotto Draw Results", message);
         }

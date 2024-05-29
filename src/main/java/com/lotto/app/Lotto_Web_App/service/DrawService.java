@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class DrawService {
@@ -21,9 +22,14 @@ public class DrawService {
     private TicketRepository ticketRepository;
 
     public Draw findLastDraw() {
-        List<Draw> draws = drawRepository.findAll();
-        return draws.isEmpty() ? null : draws.get(draws.size() - 1);
+        Optional<Draw> lastDraw = drawRepository.findTopByOrderByDrawDateDesc();
+        return lastDraw.orElse(null);
     }
+
+//    public Draw findLastDraw() {
+//        List<Draw> draws = drawRepository.findAll();
+//        return draws.isEmpty() ? null : draws.get(draws.size() - 1);
+//    }
 
     public void saveDraw(Draw draw) {
         drawRepository.save(draw);
