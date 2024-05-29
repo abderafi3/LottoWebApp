@@ -6,10 +6,9 @@ import com.lotto.app.Lotto_Web_App.scheduler.DrawScheduler;
 import com.lotto.app.Lotto_Web_App.service.DrawService;
 import com.lotto.app.Lotto_Web_App.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
@@ -66,6 +65,13 @@ public class TicketController {
             if (ticket.getSubmitDate().isAfter(lastDraw.getDrawDate())) {
                 response.put("error", true);
                 response.put("message", "This ticket will be included in the next draw on " + nextDrawDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy 'at' HH:mm")) + ".");
+                return response;
+            }
+
+            int days = nextDrawDate.getDayOfWeek() == DayOfWeek.WEDNESDAY ? 4 : 3;
+            if (ticket.getSubmitDate().isBefore(lastDraw.getDrawDate().minusDays(days))) {
+                response.put("error", true);
+                response.put("message", "You cannot compare your ticket with a more recent draw.");
                 return response;
             }
 
