@@ -32,7 +32,7 @@ public class DrawScheduler {
     public void scheduleDraw() {
         Draw draw = new Draw();
         draw.setWinningNumbers(generateWinningNumbers());
-        draw.setDrawDate(LocalDateTime.now().plusHours(2));
+        draw.setDrawDate(LocalDateTime.now());
         drawService.saveDraw(draw);
 
         Draw lastDraw = drawService.findLastDraw();
