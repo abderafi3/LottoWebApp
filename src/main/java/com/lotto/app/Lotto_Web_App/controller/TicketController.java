@@ -68,7 +68,7 @@ public class TicketController {
                 return response;
             }
 
-            int days = nextDrawDate.getDayOfWeek() == DayOfWeek.WEDNESDAY ? 4 : 3;
+            int days = nextDrawDate.getDayOfWeek() == DayOfWeek.WEDNESDAY ? 3 : 4;
             if (ticket.getSubmitDate().isBefore(lastDraw.getDrawDate().minusDays(days))) {
                 response.put("error", true);
                 response.put("message", "You cannot compare your ticket with a more recent draw.");
