@@ -26,10 +26,6 @@ public class DrawService {
         return lastDraw.orElse(null);
     }
 
-//    public Draw findLastDraw() {
-//        List<Draw> draws = drawRepository.findAll();
-//        return draws.isEmpty() ? null : draws.get(draws.size() - 1);
-//    }
 
     public void saveDraw(Draw draw) {
         drawRepository.save(draw);
@@ -39,8 +35,12 @@ public class DrawService {
         List<Ticket> allTickets = ticketRepository.findAll();
         Draw lastDraw = findLastDraw();
 
+        List<Ticket> recentTickets = allTickets.stream()
+                .filter(ticket -> ticket.getSubmitDate().isAfter(lastDraw.getDrawDate()))
+                .toList();
+
         Map<Integer, Long> matchCounts = new HashMap<>();
-        for (Ticket ticket : allTickets) {
+        for (Ticket ticket : recentTickets) {
             long matchCount = ticket.getNumberSet().stream().filter(lastDraw.getWinningNumbers()::contains).count();
             matchCounts.put((int) matchCount, matchCounts.getOrDefault((int) matchCount, 0L) + 1);
         }
