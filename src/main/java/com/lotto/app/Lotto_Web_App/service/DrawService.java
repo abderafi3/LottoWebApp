@@ -7,6 +7,7 @@ import com.lotto.app.Lotto_Web_App.repository.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.DayOfWeek;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,8 +36,9 @@ public class DrawService {
         List<Ticket> allTickets = ticketRepository.findAll();
         Draw lastDraw = findLastDraw();
 
+        int days = lastDraw.getDrawDate().getDayOfWeek() == DayOfWeek.WEDNESDAY ? 4 : 3;
         List<Ticket> recentTickets = allTickets.stream()
-                .filter(ticket -> ticket.getSubmitDate().isAfter(lastDraw.getDrawDate()))
+                .filter(ticket -> ticket.getSubmitDate().isAfter(lastDraw.getDrawDate().minusDays(days)))
                 .toList();
 
         Map<Integer, Long> matchCounts = new HashMap<>();
