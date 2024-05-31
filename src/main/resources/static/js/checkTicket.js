@@ -58,7 +58,8 @@ function displayResult(data) {
     messageDiv.classList.add('mt-3', 'p-3', 'text-center');
     if (matchCount >= 3) {
         messageDiv.classList.add('alert', 'alert-success');
-        messageDiv.textContent = `Congratulations! You have ${matchCount} matching numbers!`;
+       messageDiv.textContent = `Congratulations! You have ${matchCount} matching numbers!
+        Please refer to the prize table below for your winnings.`;
     } else {
         messageDiv.classList.add('alert', 'alert-warning');
         messageDiv.textContent = 'Better luck next time!';
