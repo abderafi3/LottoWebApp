@@ -118,7 +118,7 @@ Abbildung 1Use-Case Diagramm
 
 ### Im Anschluss wird ein Sequenzdiagramm dargestellt, das den Ablauf einer typischen Benachrichtigung bei einer Übereinstimmung der Zahlen illustrier:
 
-![](media/image3.png){width="6.69306in" height="5.12841in"}
+![](img/image3.png){width="6.69306in" height="5.12841in"}
 
 Abbildung 2: Sequence Diagramm
 
@@ -197,7 +197,7 @@ Kombination von Informationen sorgt dafür, dass die Benutzer stets gut
 informiert und zum rechtzeitigen Einreichen ihrer Lottoscheine motiviert
 sind.
 
-![](media/image6.png){width="4.84774in" height="3.12638in"}
+![](img/image6.png){width="4.84774in" height="3.12638in"}
 
 Abbildung 4: Startseite
 
@@ -214,7 +214,7 @@ nächsten Ziehung speichert, und eine Schaltfläche zum Löschen der
 Auswahl, die es den Benutzern ermöglicht, ihre Auswahl zurückzusetzen
 und neu zu beginnen, falls sie ihre Entscheidung ändern.
 
-![](media/image7.png){width="4.63542in" height="3.08819in"}
+![](img/image7.png){width="4.63542in" height="3.08819in"}
 
 Lottoschein überprüfen: Diese Seite ist darauf ausgelegt, den Benutzern
 eine schnelle und einfache Möglichkeit zu bieten, ihre Ergebnisse nach
