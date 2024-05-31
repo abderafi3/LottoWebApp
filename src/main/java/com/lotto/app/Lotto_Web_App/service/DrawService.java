@@ -38,7 +38,8 @@ public class DrawService {
 
         int days = lastDraw.getDrawDate().getDayOfWeek() == DayOfWeek.WEDNESDAY ? 4 : 3;
         List<Ticket> recentTickets = allTickets.stream()
-                .filter(ticket -> ticket.getSubmitDate().isAfter(lastDraw.getDrawDate().minusDays(days)))
+                .filter(ticket -> ticket.getSubmitDate().isAfter(lastDraw.getDrawDate().minusDays(days))
+                        && ticket.getSubmitDate().isBefore(lastDraw.getDrawDate()))
                 .toList();
 
         Map<Integer, Long> matchCounts = new HashMap<>();
