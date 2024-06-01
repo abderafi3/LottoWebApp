@@ -28,12 +28,11 @@ public class DrawScheduler {
     @Autowired
     private EmailService emailService;
 
-    @Scheduled(cron = "0 0 16 * * WED,SAT")
+    @Scheduled(cron = "0 0 18 * * WED,SAT")
     public void scheduleDraw() {
         Draw draw = new Draw();
         draw.setWinningNumbers(generateWinningNumbers());
-        draw.setDrawDate(LocalDateTime.now().plusHours(2));
-        drawService.saveDraw(draw);
+        draw.setDrawDate(LocalDateTime.now());
 
         Draw lastDraw = drawService.findLastDraw();
         LocalDateTime lastDrawDate = lastDraw != null ? lastDraw.getDrawDate() : LocalDateTime.MIN;
@@ -42,6 +41,8 @@ public class DrawScheduler {
         List<Ticket> recentTickets = allTickets.stream()
                 .filter(ticket -> ticket.getSubmitDate().isAfter(lastDrawDate))
                 .toList();
+
+        drawService.saveDraw(draw);
 
         for (Ticket ticket : recentTickets) {
             long matchCount = ticket.getNumberSet().stream().filter(draw.getWinningNumbers()::contains).count();
