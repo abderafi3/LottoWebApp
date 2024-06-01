@@ -1,12 +1,6 @@
 # Stage 1: Build the application
 FROM maven:3.8.1-openjdk-17-slim AS build
 
-#ENV TZ=Europe/Berlin
-#
-#RUN apt-get update && apt-get install -y tzdata
-#
-#RUN ln -snf /usr/share/zoneinfo/ $TZ /etc/localtime && echo $TZ > /etc/timezone
-
 # Set the working directory
 WORKDIR /app
 
@@ -23,6 +17,14 @@ FROM openjdk:17-jdk-slim
 
 # Set the working directory
 WORKDIR /app
+
+# Set the timezone environment variable
+ENV TZ=Europe/Berlin
+
+# Install tzdata package for timezone information
+RUN apt-get update && apt-get install -y tzdata && \
+    ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone && \
+    apt-get clean
 
 # Copy the JAR file from the first stage
 COPY --from=build /app/target/Lotto_Web_App-0.0.1-SNAPSHOT.jar app.jar
