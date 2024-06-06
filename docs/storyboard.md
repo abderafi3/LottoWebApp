@@ -3,8 +3,7 @@ Webapp***
 
 **Storyboard B1**
 
-![](img/image1.png){width="6.473859361329834in"
-height="2.9886297025371826in"}
+![](img/bb1.png)
 
 **Pflichtenheft:**
 
@@ -29,8 +28,7 @@ Dunkele Hintergrund.
 
 **Storyboard B2**
 
-![](img/image2.png){width="6.270565398075241in"
-height="2.893720472440945in"}
+![](img/bb2.png)
 
 **Pflichtenheft:**
 
@@ -54,8 +52,7 @@ Datenbank und gibt der Lottoscheinnummer zurück. -\> B3
 
 **Storyboard B3**
 
-![](img/image3.png){width="6.6930555555555555in"
-height="3.0907589676290463in"}
+![](img/bb3.png)
 
 **Pflichtenheft:**
 
@@ -74,8 +71,7 @@ bei Datenverarbeitung.
 
 **Storyboard B4**
 
-![](img/image4.png){width="6.612333770778653in"
-height="3.129002624671916in"}
+![](img/bb4.png)
 
 **Pflichtenheft:**
 
@@ -96,8 +92,7 @@ von Richtigen Zahlen und von Anzahl von Gewinnern.
 
 **Storyboard B5**
 
-![](img/image5.png){width="6.538641732283464in"
-height="3.1069378827646545in"}
+![](img/bb5.png)
 
 **B5P1:** *B5L4* → Die Ergebnis von der angegebene Lottoscheinnummer
 zeigt „Gewonnen", wenn die Lottoschein mindesten 3 richtige Zahlen

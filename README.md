@@ -1,6 +1,10 @@
 # Lotto Webapp Simulator
 
-The Lotto Webapp Simulator is a web application built with Java Spring Boot and PostgreSQL. It allows users to choose lotto numbers, submit tickets, and check the results. The application performs draws twice a week and notifies users via email if their ticket matches certain criteria.
+You can find the live deployment of this Webapp at this [link](https://lotto.up.railway.app/).
+
+The Lotto Webapp Simulator is a web application built with Java Spring Boot and PostgreSQL. 
+It allows users to choose lotto numbers, submit tickets, and check the results.
+The application performs draws twice a week and notifies users via email if their ticket matches certain criteria.
 
 ## Features
 

@@ -31,6 +31,11 @@ function clearSelection() {
     });
 }
 
+function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
+
 function submitNumbers() {
     if (selectedNumbers.length < 6) {
         showErrorModal("Please select 6 numbers.");
@@ -38,6 +43,10 @@ function submitNumbers() {
     }
 
     const email = document.getElementById('email').value;
+    if (email && !validateEmail(email)) {
+        showErrorModal("Please enter a valid email address.");
+        return;
+    }
 
     fetch('/api/ticket/submit', {
         method: 'POST',

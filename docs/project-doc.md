@@ -1,10 +1,17 @@
-[]{#anchor}Lotto Simulator Projekt Dokumentation
+Lotto Simulator Projekt Dokumentation
 ================================================
 
-[]{#anchor-1}Inhaltsverzeichnis
+Inhaltsverzeichnis
 -------------------------------
 
-[]{#anchor-2}1. Einleitung
+- [1- Einleitung](#einleitung)
+- [2- Analyse](#analyse)
+- [3- Konzeption](#konzeption)
+- [4- Realisierung](#realisierung)
+- [5- Überprüfung](#ueberpruefung)
+- [6- Wartung](#wartung)
+
+<a name="einleitung"></a>1. Einleitung
 --------------------------
 
 ### 1.1 Projektübersicht
@@ -50,8 +57,8 @@ Komponenten:
 
 -   Backend-Entwicklung:
 
-    -   Implementierung eines robusten Backend-Systems mit Spring book
-        Framework von Java .
+    -   Implementierung eines robusten Backend-Systems mit Spring Boot
+        Framework von Java.
     -   Entwicklung von APIs zur Kommunikation zwischen Frontend und
         Backend.
 
@@ -76,7 +83,7 @@ Komponenten:
     -   Regelmäßige Wartung und Updates zur Sicherstellung der
         kontinuierlichen Funktionalität und Sicherheit der Anwendung.
 
-[]{#anchor-3}2. Analyse
+<a name="analyse"></a>2. Analyse
 -----------------------
 
 ### 2.1 Projektplanung
@@ -89,40 +96,40 @@ reguläre Tagesarbeitszeit beträgt von Montag bis Freitag je 8 Stunden.
 Die Einteilung in die Phasen können in folgenden entnommen werden.
 
 -   Analysephase: 16 Stunden
--   Konzeption: 24 Studen
+-   Konzeption: 24 Stunden
 -   Realisierung: 56 Stunden
 -   Validierung: 8 Stunden
--   Dokumentation: 16 Studen
+-   Dokumentation: 16 Stunden
 
 ### 2.1.2 Ressourcenplanung
 
-Für Durchführung dieses Projekt ein Arbeitsplatz mit einem Laptop
-gestellt. Die Arbeit wurde auf eine VM-Ware Virtual Maschine mit Linux
-Ubuntu Betriebssystem gemacht. Zur Entwicklung des Programmcodes wird
+Für die Durchführung dieses Projekts wurde ein Arbeitsplatz mit einem Laptop
+bereitgestellt. Die Arbeit wurde auf einer VM-Ware Virtual Maschine mit Linux
+Ubuntu Betriebssystem durchgeführt. Zur Entwicklung des Programmcodes wird
 die kostenlose Software IntelliJ IDEA Community von der Firma JetBrains
-verwendet. Die Interaktion mit der PostgreSQL Datenbank erfolgte
+verwendet. Die Interaktion mit der PostgreSQL-Datenbank erfolgte
 mithilfe der Software pgAdmin4.
 
-UML-Diagrammen und Storyboards werden mit der Software*: Draw.io*
-erstellt, Mit diesem Tool können unter anderem Grafiken, Netzdiagramme
-und andere Diagrammearten erstellt werden. Für die Erstellung dieser
+UML-Diagramme und Storyboards werden mit der Software Draw.io
+erstellt. Mit diesem Tool können unter anderem Grafiken, Netzdiagramme
+und andere Diagrammarten erstellt werden. Für die Erstellung dieser
 Dokumentation wurde LibreOffice Writer verwendet.
 
 ### 2.2 Anforderungsanalyse
 
-### Der Lotto Simulator bietet Benutzern die Möglichkeit, Lottoscheine mit sechs Zahlen zwischen 1 und 49 einzureichen. Sobald ein Lottoschein eingereicht wird, speichert das System diesen mit einer eindeutigen Ticketnummer, die zur Identifikation und Überprüfung dient. Die Ziehungen erfolgen automatisch zweimal wöchentlich, jeweils mittwochs und samstags. Bei jeder Ziehung werden die vom Benutzer eingereichten Zahlen mit den gezogenen Gewinnzahlen verglichen. Wenn die Zahlen übereinstimmen, erhalten die Benutzer eine Benachrichtigung per E-Mail. Darüber hinaus können Benutzer ihre Lottoscheine jederzeit anhand der Ticketnummer im System überprüfen. Die folgende Abbildung zeigt das Use Case Diagramm, das die Interaktionen zwischen den Benutzern und dem System darstellt. 
+Der Lotto Simulator bietet Benutzern die Möglichkeit, Lottoscheine mit sechs Zahlen zwischen 1 und 49 einzureichen. Sobald ein Lottoschein eingereicht wird, speichert das System diesen mit einer eindeutigen Ticketnummer, die zur Identifikation und Überprüfung dient. Die Ziehungen erfolgen automatisch zweimal wöchentlich, jeweils mittwochs und samstags. Bei jeder Ziehung werden die vom Benutzer eingereichten Zahlen mit den gezogenen Gewinnzahlen verglichen. Wenn die Zahlen übereinstimmen, erhalten die Benutzer eine Benachrichtigung per E-Mail. Darüber hinaus können Benutzer ihre Lottoscheine jederzeit anhand der Ticketnummer im System überprüfen. Die folgende Abbildung zeigt das Use Case Diagramm, das die Interaktionen zwischen den Benutzern und dem System darstellt. 
 
-[]{#anchor-4}
+![](img/uc.png)
 
-Abbildung 1Use-Case Diagramm
+Abbildung 1: Use-Case Diagramm
 
-### Im Anschluss wird ein Sequenzdiagramm dargestellt, das den Ablauf einer typischen Benachrichtigung bei einer Übereinstimmung der Zahlen illustrier:
+Im Anschluss wird ein Sequenzdiagramm dargestellt, das den Ablauf einer typischen Benachrichtigung bei einer Übereinstimmung der Zahlen illustriert:
 
-![](img/image3.png){width="6.69306in" height="5.12841in"}
+![](img/sequenceDiagram.png)
 
-Abbildung 2: Sequence Diagramm
+Abbildung 2: Sequenzdiagramm
 
-[]{#anchor-5}3. Konzeption
+<a name="konzeption"></a>3. Konzeption
 --------------------------
 
 ### 3.1 Systemarchitektur
@@ -147,13 +154,11 @@ Benutzer gerecht wird.
 -   Scheduler: Spring Scheduler zur automatischen Durchführung der
     Ziehungen.
 
-ChatGPT
-
 Das Klassendiagramm zeigt, wie die verschiedenen Komponenten des Systems
 miteinander interagieren und welche Attribute und Methoden jede Klasse
 enthält. Zu den zentralen Klassen gehören Ticket, Draw, User,
 TicketController, DrawController, TicketService, DrawService,
-EmailService, TicketRepository, und DrawRepository. Die Ticket-Klasse
+EmailService, TicketRepository und DrawRepository. Die Ticket-Klasse
 repräsentiert einen Lottoschein mit Attributen wie Ticketnummer,
 ausgewählten Zahlen und Einreichungsdatum, während die Draw-Klasse die
 Ziehung mit Gewinnzahlen und Ziehungsdatum darstellt. Die User-Klasse
@@ -167,21 +172,27 @@ Diagramm hilft dabei, die Struktur und Interaktionen im System klar zu
 definieren und dient als Leitfaden für die Entwicklung und Wartung der
 Anwendung.
 
-Abbildung 1: Klassendiagramm
+![](img/classDiagram.png)
+
+Abbildung 3: Klassendiagramm
 
 ### 3.2 Datenmodellierung
 
-[]{#anchor-6}Das Datenmodell des Lotto Simulators wird in einem
+Das Datenmodell des Lotto Simulators wird in einem
 Entity-Relationship-Model (ERM) visualisiert, das die Struktur und die
 Beziehungen der gespeicherten Daten darstellt. Die beiden Hauptentitäten
 in diesem Modell sind Ticket und Draw. Diese Entitäten speichern alle
 relevanten Informationen, die zur Verwaltung der Lottoscheine und der
-Ziehungen erforderlich sind. Im Folgenden Abbildung werden die
+Ziehungen erforderlich sind. In der folgenden Abbildung werden die
 Entitätstypen und ihre Attribute sowie ihre Beziehungen gezeigt.
 
-### 3.3 UI- Design
+![](img/erdiagram.png)
 
-Startseite: Die Startseite des Lotto Simulators zeigt einer freundlichen
+Abbildung 4: ER-Diagramm
+
+### 3.3 UI-Design
+
+Startseite: Die Startseite des Lotto Simulators zeigt eine freundliche
 Willkommensnachricht. Weiterhin werden die Spielregeln klar und prägnant
 dargestellt, damit sowohl neue als auch erfahrene Benutzer sofort
 verstehen, wie sie teilnehmen können: Sie erfahren, wie sie Lottoscheine
@@ -197,9 +208,9 @@ Kombination von Informationen sorgt dafür, dass die Benutzer stets gut
 informiert und zum rechtzeitigen Einreichen ihrer Lottoscheine motiviert
 sind.
 
-![](img/image6.png){width="4.84774in" height="3.12638in"}
+![](img/f1.png)
 
-Abbildung 4: Startseite
+Abbildung 5: Startseite
 
 Lottoschein einreichen: Diese Seite bietet eine benutzerfreundliche
 Oberfläche, die es den Benutzern ermöglicht, ihre gewünschten Zahlen
@@ -214,7 +225,9 @@ nächsten Ziehung speichert, und eine Schaltfläche zum Löschen der
 Auswahl, die es den Benutzern ermöglicht, ihre Auswahl zurückzusetzen
 und neu zu beginnen, falls sie ihre Entscheidung ändern.
 
-![](img/image7.png){width="4.63542in" height="3.08819in"}
+![](img/f2.png)
+
+Abbildung 6: Lottospielen Seite
 
 Lottoschein überprüfen: Diese Seite ist darauf ausgelegt, den Benutzern
 eine schnelle und einfache Möglichkeit zu bieten, ihre Ergebnisse nach
@@ -231,9 +244,11 @@ Ziehung. Die Ergebnisse werden dann auf derselben Seite angezeigt, wobei
 sowohl die Gewinnzahlen als auch der Status des eingereichten Tickets
 (z.B. Gewinn oder kein Gewinn) dargestellt werden.
 
-Abbildung 6: CheckTicket Seite
+![](img/f3.png)
 
-[]{#anchor-7}4. Realisierung
+Abbildung 7: CheckTicket Seite
+
+<a name="realisierung"></a>4. Realisierung
 ----------------------------
 
 ### 4.1 Frontend-Entwicklung
@@ -251,8 +266,8 @@ Anwendung ermöglicht.
         Anwendung ermöglicht.
     -   playLotto.html: Diese Seite erlaubt es den Benutzern, ihre
         Lottoscheine einzureichen. Benutzer können sechs Zahlen zwischen
-        1 und 49 auswählen, ihre E-Mail eingeben wenn sie möchten, und
-        das zur Teilnahme an der nächsten Ziehung absenden.
+        1 und 49 auswählen, ihre E-Mail eingeben, wenn sie möchten, und
+        diese zur Teilnahme an der nächsten Ziehung absenden.
     -   checkTicket.html: Auf dieser Seite können Benutzer ihre
         eingereichten Lottoscheine überprüfen, indem sie die eindeutige
         Ticketnummer eingeben, um die Ergebnisse der Ziehungen zu sehen.
@@ -267,8 +282,8 @@ Anwendung ermöglicht.
 -   **JavaScript:**
 
     -   Zahlenauswahl: JavaScript wird verwendet, um die Logik für die
-        Auswahl der Zahlen zu implementieren, sicherzustellen, dass die
-        Lottoereglen erfüllt sind.
+        Auswahl der Zahlen zu implementieren und sicherzustellen, dass die
+        Lotto-Regeln erfüllt sind.
     -   Lottoscheinübermittlung: Die Logik für die Übermittlung der
         Lottozahlen wird in JavaScript implementiert, um eine
         reibungslose und benutzerfreundliche Erfahrung zu gewährleisten.
@@ -352,7 +367,7 @@ und der notwendigen Datenbankstruktur.
         in einer kontrollierten Umgebung getestet werden, um
         sicherzustellen, dass alle Funktionen korrekt arbeiten.
 
-[]{#anchor-8}5. Überprüfung
+<a name="ueberpruefung"></a>5. Überprüfung
 ---------------------------
 
 ### 5.1 Teststrategie
@@ -391,20 +406,28 @@ und der notwendigen Datenbankstruktur.
     -   Testen der E-Mail-Benachrichtigungen für Gewinnscheine.
     -   Testen der E-Mail-Benachrichtigungen für Nicht-Gewinnscheine.
 
-[]{#anchor-9}6. Wartung
+<a name="wartung"></a>6. Wartung
 -----------------------
 
--   Fehlerbehebungen: Behebung aller identifizierten Fehler und
-    Probleme.
--   Performance-Tuning: Optimierung der Anwendung für bessere Leistung.
--   Feature-Erweiterungen: Hinzufügen neuer Funktionen basierend auf
-    Benutzerfeedback.
--   Sicherheitsupdates: Implementierung von Sicherheits-Patches und
-    Updates.
--   Regelmäßige Backups: Sicherstellung regelmäßiger Backups der
-    Datenbank zur Vermeidung von Datenverlust.
+### 6.1 Fehlerbehebungen
 
-### 
+Behebung aller identifizierten Fehler und Probleme.
+
+### 6.2 Performance-Tuning
+
+Optimierung der Anwendung für bessere Leistung.
+
+### 6.3 Feature-Erweiterungen
+
+Hinzufügen neuer Funktionen basierend auf Benutzerfeedback.
+
+### 6.4 Sicherheitsupdates
+
+Implementierung von Sicherheits-Patches und Updates.
+
+### 6.5 Regelmäßige Backups
+
+Sicherstellung regelmäßiger Backups der Datenbank zur Vermeidung von Datenverlust.
 
 Diese Dokumentation beschreibt detailliert alle Phasen des
 Wasserfallmodells für das Lotto Simulator Projekt. Jede Phase enthält
@@ -417,3 +440,4 @@ gut dokumentierten und wartbaren Form zur Verfügung steht.
 Durch die umfassende Dokumentation und Wartung wird sichergestellt, dass
 das Lotto Simulator Projekt nicht nur erfolgreich bereitgestellt,
 sondern auch langfristig unterstützt und weiterentwickelt werden kann.
+
